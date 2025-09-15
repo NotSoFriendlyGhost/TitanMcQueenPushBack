@@ -1,7 +1,7 @@
 {
   "py/object": "pros.conductor.project.Project",
   "py/state": {
-    "project_name": "TitantronPushBack",
+    "project_name": "38535KPushBack",
     "target": "v5",
     "templates": {
       "EZ-Template": {
@@ -424,7 +424,8 @@
       }
     },
     "upload_options": {
-      "description": ""
+      "description": "",
+      "icon": "pizza"
     },
     "use_early_access": false
   }
