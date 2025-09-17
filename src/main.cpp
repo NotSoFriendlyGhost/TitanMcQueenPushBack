@@ -1,6 +1,7 @@
 #include "main.h"
 
 #include "EZ-Template/util.hpp"
+#include "pros/misc.h"
 #include "pros/motors.hpp"
 
 /////
@@ -8,7 +9,9 @@
 // https://ez-robotics.github.io/EZ-Template/
 /////
 
+// Intake motors
 pros::Motor intake(1);
+pros::Motor topRoller(2);
 pros::Motor boxRoller(10);
 
 // Chassis constructor
