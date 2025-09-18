@@ -11,7 +11,7 @@
 
 // Intake motors
 pros::Motor intake(1);
-pros::Motor topRoller(2);
+pros::Motor topRoller(8);
 pros::Motor boxRoller(10);
 
 // Chassis constructor
@@ -20,7 +20,7 @@ ez::Drive chassis(
     {-2, -3, -4},  // Left Chassis Ports (negative port will reverse it!)
     {5, 6, 7},     // Right Chassis Ports (negative port will reverse it!)
 
-    7,     // IMU Port
+    9,     // IMU Port
     3.25,  // Wheel Diameter (Remember, 4" wheels without screw holes are actually 4.125!)
     450);  // Wheel RPM = cartridge * (motor gear / wheel gear)
 
@@ -275,9 +275,14 @@ void opcontrol() {
     } else if (master.get_digital(pros::E_CONTROLLER_DIGITAL_R2)) {
       intake.move(-127);
       boxRoller.move(-127);
+      else if (master.get_digital(button: pros::E_CONTROLLER_DIGITAL_A)) {
+      topRoller.move(voltage: -127);
+      else if (master.get_digital(button: pros::E_CONTROLLER_DIGITAL_B)) {
+      topRoller.move(voltage: 127);
     } else {
       intake.brake();
       boxRoller.brake();
+      topRoller.brake();
     }
 
     pros::delay(ez::util::DELAY_TIME);  // This is used for timer calculations!  Keep this ez::util::DELAY_TIME
