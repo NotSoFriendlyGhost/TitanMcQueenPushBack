@@ -272,7 +272,7 @@ void opcontrol() {
       boxRoller.move(127);
     }
     // L2: Feed into box from top
-    if (master.get_digital(pros::E_CONTROLLER_DIGITAL_L2)) {
+    else if (master.get_digital(pros::E_CONTROLLER_DIGITAL_L2)) {
       intake.move(-127);
       boxRoller.move(-127);
       topRoller.move(-127);
