@@ -266,19 +266,27 @@ void opcontrol() {
     // Put more user control code here!
     // . . .
 
+    // L1: Feed into box from bottom
     if (master.get_digital(pros::E_CONTROLLER_DIGITAL_L1)) {
       intake.move(-127);
       boxRoller.move(127);
-    } else if (master.get_digital(pros::E_CONTROLLER_DIGITAL_R1)) {
-      intake.move(127);
-      boxRoller.move(-127);
-    } else if (master.get_digital(pros::E_CONTROLLER_DIGITAL_R2)) {
+    }
+    // L2: Feed into box from top
+    if (master.get_digital(pros::E_CONTROLLER_DIGITAL_L2)) {
       intake.move(-127);
       boxRoller.move(-127);
-      else if (master.get_digital(button: pros::E_CONTROLLER_DIGITAL_A)) {
-      topRoller.move(voltage: -127);
-      else if (master.get_digital(button: pros::E_CONTROLLER_DIGITAL_B)) {
-      topRoller.move(voltage: 127);
+      topRoller.move(-127);
+    }
+    // R1: Out from bottom
+    else if (master.get_digital(pros::E_CONTROLLER_DIGITAL_R1)) {
+      intake.move(127);
+      boxRoller.move(-127);
+    }
+    // R2: Out from middle
+    else if (master.get_digital(pros::E_CONTROLLER_DIGITAL_R2)) {
+      intake.move(-127);
+      boxRoller.move(-127);
+      topRoller.move(127);
     } else {
       intake.brake();
       boxRoller.brake();
