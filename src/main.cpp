@@ -269,25 +269,32 @@ void opcontrol() {
     // L1: Feed into box from bottom
     if (master.get_digital(pros::E_CONTROLLER_DIGITAL_L1)) {
       intake.move(-127);
-      boxRoller.move(127);
+      boxRoller.move(-127);
     }
     // L2: Feed into box from top
     else if (master.get_digital(pros::E_CONTROLLER_DIGITAL_L2)) {
       intake.move(-127);
-      boxRoller.move(-127);
+      boxRoller.move(127);
       topRoller.move(-127);
     }
     // R1: Out from bottom
     else if (master.get_digital(pros::E_CONTROLLER_DIGITAL_R1)) {
       intake.move(127);
-      boxRoller.move(-127);
+      boxRoller.move(127);
     }
     // R2: Out from middle
     else if (master.get_digital(pros::E_CONTROLLER_DIGITAL_R2)) {
       intake.move(-127);
-      boxRoller.move(-127);
+      boxRoller.move(127);
       topRoller.move(127);
-    } else {
+    } 
+    // A: Out from top
+    else if (master.get_digital(pros::E_CONTROLLER_DIGITAL_A)) {
+      intake.move(-127);
+      boxRoller.move(127);
+      topRoller.move(-127);
+    }
+    else {
       intake.brake();
       boxRoller.brake();
       topRoller.brake();
