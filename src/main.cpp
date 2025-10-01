@@ -3,6 +3,7 @@
 #include "EZ-Template/util.hpp"
 #include "pros/misc.h"
 #include "pros/motors.hpp"
+#include "subsystems.hpp"
 
 /////
 // For installation, upgrading, documentations, and tutorials, check out our website!
@@ -266,7 +267,7 @@ void opcontrol() {
       intake.move(-127);
       boxRoller.move(-127);
     }
-    // L2: Feed into box from top
+    // L2: Out from top
     else if (master.get_digital(pros::E_CONTROLLER_DIGITAL_L2)) {
       intake.move(-127);
       boxRoller.move(127);
@@ -283,17 +284,14 @@ void opcontrol() {
       boxRoller.move(127);
       topRoller.move(127);
     } 
-    // A: Out from top
-    else if (master.get_digital(pros::E_CONTROLLER_DIGITAL_A)) {
-      intake.move(-127);
-      boxRoller.move(127);
-      topRoller.move(-127);
-    }
     else {
       intake.brake();
       boxRoller.brake();
       topRoller.brake();
     }
+
+    // A: Toggle tongue mech
+    tongue.button_toggle(master.get_digital(DIGITAL_A));
 
     pros::delay(ez::util::DELAY_TIME);  // This is used for timer calculations!  Keep this ez::util::DELAY_TIME
   }

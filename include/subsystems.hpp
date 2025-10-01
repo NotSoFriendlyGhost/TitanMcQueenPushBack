@@ -14,3 +14,6 @@ extern Drive chassis;
 inline pros::Motor intake(1);
 inline pros::Motor topRoller(8);
 inline pros::Motor boxRoller(10);
+
+// Tongue mech
+inline ez::Piston tongue('A');
