@@ -9,3 +9,8 @@ extern Drive chassis;
 
 // inline pros::Motor intake(1);
 // inline pros::adi::DigitalIn limit_switch('A');
+
+// Intake motors
+inline pros::Motor intake(1);
+inline pros::Motor topRoller(8);
+inline pros::Motor boxRoller(10);

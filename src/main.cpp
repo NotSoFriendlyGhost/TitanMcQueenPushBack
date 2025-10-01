@@ -9,11 +9,6 @@
 // https://ez-robotics.github.io/EZ-Template/
 /////
 
-// Intake motors
-pros::Motor intake(1);
-pros::Motor topRoller(8);
-pros::Motor boxRoller(10);
-
 // Chassis constructor
 ez::Drive chassis(
     // These are your drive motors, the first motor is used for sensing!
