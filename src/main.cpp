@@ -1,6 +1,7 @@
 #include "main.h"
 
 #include "EZ-Template/util.hpp"
+#include "autons.hpp"
 #include "pros/misc.h"
 #include "pros/motors.hpp"
 #include "subsystems.hpp"
@@ -51,11 +52,11 @@ void initialize() {
 
   // Configure your chassis controls
   chassis.opcontrol_curve_buttons_toggle(true);   // Enables modifying the controller curve with buttons on the joysticks
-  chassis.opcontrol_drive_activebrake_set(2.0);   // Sets the active brake kP. We recommend ~2.  0 will disable.
+  chassis.opcontrol_drive_activebrake_set(0.0);   // Sets the active brake kP. We recommend ~2.  0 will disable.
   // chassis.opcontrol_curve_default_set(0.0, 0.0);  // Defaults for curve. If using tank, only the first parameter is used. (Comment this line out if you have an SD card!)
 
   // Set the drive to your own constants from autons.cpp!
-  default_constants();
+  tuned_constants();
 
   // These are already defaulted to these buttons, but you can change the left/right curve buttons here!
   chassis.opcontrol_curve_buttons_left_set(pros::E_CONTROLLER_DIGITAL_LEFT, pros::E_CONTROLLER_DIGITAL_RIGHT);  // If using tank, only the left side is used.

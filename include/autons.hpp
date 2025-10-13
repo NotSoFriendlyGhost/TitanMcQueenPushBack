@@ -1,6 +1,7 @@
 #pragma once
 
 void default_constants();
+void tuned_constants();
 
 void drive_example();
 void turn_example();
