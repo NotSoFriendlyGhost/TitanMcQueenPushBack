@@ -16,4 +16,4 @@ inline pros::Motor topRoller(1);
 inline pros::Motor boxRoller(10);
 
 // Tongue mech
-inline ez::Piston tongue('A');
+inline ez::Piston tongue('H');
