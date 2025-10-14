@@ -18,7 +18,7 @@ void auton1(){
   chassis.pid_drive_set(29_in, 90);
   intake_in();
   chassis.pid_wait();
-  chassis.pid_turn_set(70_deg, TURN_SPEED);
+  chassis.pid_turn_relative_set(70_deg, TURN_SPEED);
   chassis.pid_wait();
   chassis.pid_drive_set(14_in, 90);
   chassis.pid_wait();
