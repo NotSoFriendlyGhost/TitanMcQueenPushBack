@@ -1,4 +1,8 @@
+#include "autons.hpp"
+#include "intake.hpp"
 #include "main.h"
+#include "pros/rtos.hpp"
+#include "subsystems.hpp"
 
 /////
 // For installation, upgrading, documentations, and tutorials, check out our website!
@@ -9,6 +13,18 @@
 const int DRIVE_SPEED = 110;
 const int TURN_SPEED = 90;
 const int SWING_SPEED = 110;
+
+void auton1(){
+  chassis.pid_drive_set(29_in, 90);
+  intake_in();
+  chassis.pid_wait();
+  chassis.pid_turn_set(70_deg, TURN_SPEED);
+  chassis.pid_wait();
+  chassis.pid_drive_set(14_in, 90);
+  chassis.pid_wait();
+  middleScore();
+  pros::delay(2000);
+}
 
 ///
 // Constants

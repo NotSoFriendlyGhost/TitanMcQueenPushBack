@@ -2,6 +2,7 @@
 
 #include "EZ-Template/util.hpp"
 #include "autons.hpp"
+#include "intake.hpp"
 #include "pros/misc.h"
 #include "pros/motors.hpp"
 #include "subsystems.hpp"
@@ -51,8 +52,8 @@ void initialize() {
   // chassis.odom_tracker_left_set(&vert_tracker);
 
   // Configure your chassis controls
-  chassis.opcontrol_curve_buttons_toggle(true);   // Enables modifying the controller curve with buttons on the joysticks
-  chassis.opcontrol_drive_activebrake_set(2.0);   // Sets the active brake kP. We recommend ~2.  0 will disable.
+  chassis.opcontrol_curve_buttons_toggle(true);  // Enables modifying the controller curve with buttons on the joysticks
+  chassis.opcontrol_drive_activebrake_set(2.0);  // Sets the active brake kP. We recommend ~2.  0 will disable.
   // chassis.opcontrol_curve_default_set(0.0, 0.0);  // Defaults for curve. If using tank, only the first parameter is used. (Comment this line out if you have an SD card!)
 
   // Set the drive to your own constants from autons.cpp!
@@ -64,6 +65,7 @@ void initialize() {
 
   // Autonomous Selector using LLEMU
   ez::as::auton_selector.autons_add({
+      {"Auton 1\n\nDrive forward and turn", auton1},
       {"Drive\n\nDrive forward and come back", drive_example},
       {"Turn\n\nTurn 3 times.", turn_example},
       {"Drive and Turn\n\nDrive forward, turn, come back", drive_and_turn},
@@ -265,30 +267,21 @@ void opcontrol() {
 
     // L1: Feed into box from bottom
     if (master.get_digital(pros::E_CONTROLLER_DIGITAL_L1)) {
-      intake.move(-127);
-      boxRoller.move(-127);
+      intake_in();
     }
     // L2: Out from top
     else if (master.get_digital(pros::E_CONTROLLER_DIGITAL_L2)) {
-      intake.move(-127);
-      boxRoller.move(127);
-      topRoller.move(-127);
+      topScore();
     }
     // R1: Out from bottom
     else if (master.get_digital(pros::E_CONTROLLER_DIGITAL_R1)) {
-      intake.move(127);
-      boxRoller.move(127);
+      intake_out();
     }
     // R2: Out from middle
     else if (master.get_digital(pros::E_CONTROLLER_DIGITAL_R2)) {
-      intake.move(-127);
-      boxRoller.move(127);
-      topRoller.move(127);
-    } 
-    else {
-      intake.brake();
-      boxRoller.brake();
-      topRoller.brake();
+      middleScore();
+    } else {
+      stopIntake();
     }
 
     // Up: Toggle tongue mech
