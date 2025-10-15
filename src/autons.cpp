@@ -20,10 +20,18 @@ void auton1(){
   chassis.pid_wait();
   chassis.pid_turn_relative_set(70_deg, TURN_SPEED);
   chassis.pid_wait();
-  chassis.pid_drive_set(14_in, 90);
+  chassis.pid_drive_set(12_in, DRIVE_SPEED);
   chassis.pid_wait();
   middleScore();
   pros::delay(2000);
+  stopIntake();
+  chassis.pid_drive_set(-44_in,DRIVE_SPEED);
+  chassis.pid_wait();
+  chassis.pid_turn_relative_set(130,TURN_SPEED);
+  chassis.pid_wait();
+  tongue.set(1);
+  chassis.pid_drive_set(12_in, DRIVE_SPEED);
+  chassis.pid_wait();
 }
 
 ///
