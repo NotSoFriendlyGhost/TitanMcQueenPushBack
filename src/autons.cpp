@@ -13,14 +13,15 @@
 const int DRIVE_SPEED = 110;
 const int TURN_SPEED = 90;
 const int SWING_SPEED = 110;
+const int TURN_SPEEDSLOW = 50;
 
 void auton1(){
-  chassis.pid_drive_set(29_in, 90);
+  chassis.pid_drive_set(31_in, 70);
   intake_in();
   chassis.pid_wait();
   chassis.pid_turn_relative_set(70_deg, TURN_SPEED);
   chassis.pid_wait();
-  chassis.pid_drive_set(12_in, DRIVE_SPEED);
+  chassis.pid_drive_set(10.25_in, DRIVE_SPEED);
   chassis.pid_wait();
   middleScore();
   pros::delay(2000);
@@ -29,9 +30,23 @@ void auton1(){
   chassis.pid_wait();
   chassis.pid_turn_relative_set(130,TURN_SPEED);
   chassis.pid_wait();
+  intake_in();
   tongue.set(1);
-  chassis.pid_drive_set(12_in, DRIVE_SPEED);
+  pros::delay(500);
+  chassis.pid_drive_set(17_in, 70);
   chassis.pid_wait();
+  pros::delay(2000);
+  stopIntake();
+  chassis.pid_drive_set(-8_in, DRIVE_SPEED);
+  chassis.pid_wait();
+  chassis.pid_turn_relative_set(180,TURN_SPEED);//how do you turn slower
+  chassis.pid_wait();
+  tongue.set(0);
+  chassis.pid_drive_set(14_in, DRIVE_SPEED);
+  chassis.pid_wait();
+  topScore();
+  pros::delay(1000);
+  stopIntake();
 }
 
 ///
