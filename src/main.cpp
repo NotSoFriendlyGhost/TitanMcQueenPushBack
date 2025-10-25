@@ -66,7 +66,7 @@ void initialize() {
   // Autonomous Selector using LLEMU
   ez::as::auton_selector.autons_add({
       {"Left auton\n\nScore on middle", auton1},
-      {"Right auton\n\nScore on low", auton1},
+      {"Right auton\n\nScore on low", auton2},
       {"Drive\n\nDrive forward and come back", drive_example},
       {"Turn\n\nTurn 3 times.", turn_example},
       {"Drive and Turn\n\nDrive forward, turn, come back", drive_and_turn},
