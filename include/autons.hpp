@@ -19,3 +19,4 @@ void odom_boomerang_injected_pure_pursuit_example();
 void measure_offsets();
 
 void auton1();
+void auton2();
