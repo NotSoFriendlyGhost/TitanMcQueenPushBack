@@ -15,55 +15,37 @@ const int TURN_SPEED = 90;
 const int SWING_SPEED = 110;
 
 void auton1(){
-  chassis.pid_drive_set(24_in, DRIVE_SPEED);
-  chassis.pid_wait();
-  chassis.pid_turn_relative_set(-90_deg, TURN_SPEED);
-  chassis.pid_wait();
-  chassis.pid_drive_set(15_in, DRIVE_SPEED);
+  chassis.pid_drive_set(31_in, 70);
   intake_in();
   chassis.pid_wait();
-  chassis.pid_turn_relative_set(135_deg, TURN_SPEED);
+  chassis.pid_turn_relative_set(71_deg, TURN_SPEED);
   chassis.pid_wait();
-  chassis.pid_drive_set(12.75_in, DRIVE_SPEED);
+  chassis.pid_drive_set(11.25_in, DRIVE_SPEED);
   chassis.pid_wait();
   middleScore();
-  pros::delay(1500);
+  pros::delay(2000);
   stopIntake();
-  chassis.pid_turn_relative_set(5_deg, TURN_SPEED);
+  chassis.pid_drive_set(-45_in,DRIVE_SPEED);
   chassis.pid_wait();
-  chassis.pid_drive_set(-49_in,DRIVE_SPEED);
-  chassis.pid_wait();
-  chassis.pid_turn_relative_set(130,TURN_SPEED);
+  chassis.pid_turn_relative_set(133,TURN_SPEED);
   chassis.pid_wait();
   intake_in();
   tongue.set(1);
-  pros::delay(300);
-  chassis.pid_drive_set(16_in, 127);
+  pros::delay(500);
+  chassis.pid_drive_set(19.5_in, 127);
   chassis.pid_wait();
-    //   {-2, -3, -4},  // Left Chassis Ports (negative port will reverse it!)
-    // {5, 6, 7},
-  // pros::MotorGroup left_motors({-2, -3, -4});
-  // pros::MotorGroup right_motors({5, 6, 7});
-
-  // for(int i = 0; i<1; i++){
-  //   chassis.drive_set(127, 127);
-  //   pros::delay(400);
-  //   chassis.drive_set(0,0);
-    
-  //   chassis.pid_drive_set(-6_in, DRIVE_SPEED);
-  //   chassis.pid_wait();
-  // }
+  pros::delay(2000);
   chassis.pid_drive_set(-8_in, DRIVE_SPEED);
   chassis.pid_wait();
+  stopIntake();
   tongue.set(0);
-    stopIntake();
-  pros::delay(200);
-  chassis.pid_turn_relative_set(180,TURN_SPEED);
+  pros::delay(500);
+  chassis.pid_turn_relative_set(179,TURN_SPEED);
   chassis.pid_wait();
-  chassis.pid_drive_set(20_in, DRIVE_SPEED);
+  chassis.pid_drive_set(15.25_in, DRIVE_SPEED);
   chassis.pid_wait();
   topScore();
-  pros::delay(10000);
+  pros::delay(5000);
 }
 
 ///
