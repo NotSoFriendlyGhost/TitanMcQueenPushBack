@@ -22,7 +22,7 @@ void auton1(){
   chassis.pid_wait();
   chassis.pid_drive_set(11.5_in, DRIVE_SPEED);
   chassis.pid_wait();
-  middleScore(false);
+  middleScore();
   pros::delay(2000);
   stopIntake();
   chassis.pid_drive_set(-44.5_in,DRIVE_SPEED);
@@ -46,7 +46,7 @@ void auton1(){
   chassis.pid_wait();
   chassis.pid_drive_set(15.75_in, DRIVE_SPEED);
   chassis.pid_wait();
-  topScore(false);
+  topScore();
   pros::delay(10000);
 }
 
@@ -82,7 +82,7 @@ void auton2(){
   chassis.pid_wait();
   chassis.pid_drive_set(15.75_in, DRIVE_SPEED);
   chassis.pid_wait();
-  topScore(false);
+  topScore();
   pros::delay(10000);
 }
 

@@ -52,16 +52,16 @@ void initialize() {
   // chassis.odom_tracker_left_set(&vert_tracker);
 
   // Configure your chassis controls
-  chassis.opcontrol_curve_buttons_toggle(false);  // Enables modifying the controller curve with buttons on the joysticks
-  chassis.opcontrol_drive_activebrake_set(2.0);   // Sets the active brake kP. We recommend ~2.  0 will disable.
+  chassis.opcontrol_curve_buttons_toggle(true);  // Enables modifying the controller curve with buttons on the joysticks
+  chassis.opcontrol_drive_activebrake_set(2.0);  // Sets the active brake kP. We recommend ~2.  0 will disable.
   // chassis.opcontrol_curve_default_set(0.0, 0.0);  // Defaults for curve. If using tank, only the first parameter is used. (Comment this line out if you have an SD card!)
 
   // Set the drive to your own constants from autons.cpp!
   tuned_constants();
 
   // These are already defaulted to these buttons, but you can change the left/right curve buttons here!
-  // chassis.opcontrol_curve_buttons_left_set(pros::E_CONTROLLER_DIGITAL_LEFT, pros::E_CONTROLLER_DIGITAL_RIGHT);  // If using tank, only the left side is used.
-  // chassis.opcontrol_curve_buttons_right_set(pros::E_CONTROLLER_DIGITAL_Y, pros::E_CONTROLLER_DIGITAL_A);
+  chassis.opcontrol_curve_buttons_left_set(pros::E_CONTROLLER_DIGITAL_LEFT, pros::E_CONTROLLER_DIGITAL_RIGHT);  // If using tank, only the left side is used.
+  chassis.opcontrol_curve_buttons_right_set(pros::E_CONTROLLER_DIGITAL_Y, pros::E_CONTROLLER_DIGITAL_A);
 
   // Autonomous Selector using LLEMU
   ez::as::auton_selector.autons_add({
@@ -148,7 +148,7 @@ void autonomous() {
 /**
  * Simplifies printing tracker values to the brain screen
  */
-void screen_print_tracker(ez::tracking_wheel* tracker, std::string name, int line) {
+void screen_print_tracker(ez::tracking_wheel *tracker, std::string name, int line) {
   std::string tracker_value = "", tracker_width = "";
   // Check if the tracker exists
   if (tracker != nullptr) {
@@ -235,9 +235,6 @@ void ez_template_extras() {
   }
 }
 
-// Shared variable
-bool hoard = true;
-
 /**
  * Runs the operator control code. This function will be started in its own task
  * with the default priority and stack size whenever the robot is enabled via
@@ -257,7 +254,7 @@ void opcontrol() {
 
   while (true) {
     // Gives you some extras to make EZ-Template ezier
-    // ez_template_extras();
+    ez_template_extras();
 
     // chassis.opcontrol_tank();  // Tank control
     chassis.opcontrol_arcade_standard(ez::SPLIT);  // Standard split arcade
@@ -275,7 +272,7 @@ void opcontrol() {
     }
     // L2: Out from top
     else if (master.get_digital(pros::E_CONTROLLER_DIGITAL_L2)) {
-      topScore(hoard);
+      topScore();
     }
     // R1: Out from bottom
     else if (master.get_digital(pros::E_CONTROLLER_DIGITAL_R1)) {
@@ -283,16 +280,13 @@ void opcontrol() {
     }
     // R2: Out from middle
     else if (master.get_digital(pros::E_CONTROLLER_DIGITAL_R2)) {
-      middleScore(hoard);
+      middleScore();
     } else {
       stopIntake();
     }
-    if (master.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_B)) {
-      hoard = !hoard;
-    }
 
     // Up: Toggle tongue mech
-    tongue.button_toggle(master.get_digital(DIGITAL_A));
+    tongue.button_toggle(master.get_digital(DIGITAL_B));
 
     pros::delay(ez::util::DELAY_TIME);  // This is used for timer calculations!  Keep this ez::util::DELAY_TIME
   }

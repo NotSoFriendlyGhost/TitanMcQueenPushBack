@@ -10,17 +10,15 @@ void intake_out() {
   boxRoller.move(127);
 }
 
-void topScore(bool hoard) {
+void topScore() {
   intake.move(-127);
-  if(hoard)
-    boxRoller.move(127);
+  boxRoller.move(127);
   topRoller.move(-127);
 }
 
-void middleScore(bool hoard) {
+void middleScore() {
   intake.move(-127);
-  if(hoard)
-    boxRoller.move(127);
+  boxRoller.move(127);
   topRoller.move(127);
 }
 
