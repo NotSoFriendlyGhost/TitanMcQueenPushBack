@@ -5,3 +5,6 @@ void intake_out();
 void topScore();
 void middleScore();
 void stopIntake();
+
+void slopeScore();
+void colorSortLaunch();

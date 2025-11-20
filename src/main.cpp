@@ -272,7 +272,7 @@ void opcontrol() {
     }
     // L2: Out from top
     else if (master.get_digital(pros::E_CONTROLLER_DIGITAL_L2)) {
-      topScore();
+      slopeScore();
     }
     // R1: Out from bottom
     else if (master.get_digital(pros::E_CONTROLLER_DIGITAL_R1)) {
@@ -280,7 +280,7 @@ void opcontrol() {
     }
     // R2: Out from middle
     else if (master.get_digital(pros::E_CONTROLLER_DIGITAL_R2)) {
-      middleScore();
+      colorSortLaunch();
     } else {
       stopIntake();
     }
