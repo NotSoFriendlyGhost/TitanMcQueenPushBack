@@ -11,31 +11,20 @@ void intake_out() {
   topMotor.move(-127);
 }
 
-void topScore() {
-  intake.move(-127);
-  // boxRoller.move(127);
-  // topRoller.move(-127);
-}
-
 void middleScore() {
   intake.move(127);
   topMotor.move(127);
   middleBand.set(1);
-  // boxRoller.move(127);
-  // topRoller.move(127);
 }
 
 void stopIntake() {
   intake.brake();
   topMotor.brake();
+  middleBand.set(0);
+  
 }
 
 void slopeScore(){
   intake.move(127);
   topMotor.move(127);
-}
-
-void colorSortLaunch(){
-  intake.move(127);
-  topMotor.move(-127);
 }

@@ -12,11 +12,9 @@ extern Drive chassis;
 
 // Intake motors
 inline pros::Motor intake(-8);
-
 inline pros::Motor topMotor(9);
 
-// Tongue mech
-inline ez::Piston tongue('H');
-
-// Middle band
-inline ez::Piston middleBand('A');
+// Pneumatics
+inline ez::Piston tongue('B');
+inline ez::Piston middleBand('C');
+inline ez::Piston descore('A');

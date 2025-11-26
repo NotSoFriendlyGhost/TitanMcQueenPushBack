@@ -18,7 +18,7 @@ ez::Drive chassis(
     {-2, -3, -4},  // Left Chassis Ports (negative port will reverse it!)
     {5, 6, 7},     // Right Chassis Ports (negative port will reverse it!)
 
-    9,     // IMU Port
+    1,     // IMU Port
     3.25,  // Wheel Diameter (Remember, 4" wheels without screw holes are actually 4.125!)
     450);  // Wheel RPM = cartridge * (motor gear / wheel gear)
 
@@ -67,8 +67,6 @@ void initialize() {
 
   // Autonomous Selector using LLEMU
   ez::as::auton_selector.autons_add({
-      {"Left auton\n\nScore on middle", auton1},
-      {"Right auton\n\nScore on low", auton2},
       {"Drive\n\nDrive forward and come back", drive_example},
       {"Turn\n\nTurn 3 times.", turn_example},
       {"Drive and Turn\n\nDrive forward, turn, come back", drive_and_turn},
@@ -285,11 +283,13 @@ void opcontrol() {
       middleScore();
     } else {
       stopIntake();
-      middleBand.set(0);
     }
 
-    // Up: Toggle tongue mech
+    // B: Toggle tongue mech
     tongue.button_toggle(master.get_digital(DIGITAL_B));
+
+    // A: Toggle descore
+    descore.button_toggle(master.get_digital(DIGITAL_A));
 
     pros::delay(ez::util::DELAY_TIME);  // This is used for timer calculations!  Keep this ez::util::DELAY_TIME
   }
