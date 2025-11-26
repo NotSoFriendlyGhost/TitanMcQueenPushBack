@@ -11,9 +11,12 @@ extern Drive chassis;
 // inline pros::adi::DigitalIn limit_switch('A');
 
 // Intake motors
-inline pros::Motor intake(8);
+inline pros::Motor intake(-8);
 
 inline pros::Motor topMotor(9);
 
 // Tongue mech
 inline ez::Piston tongue('H');
+
+// Middle band
+inline ez::Piston middleBand('A');

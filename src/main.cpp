@@ -37,6 +37,8 @@ ez::Drive chassis(
  * to keep execution time for this mode under a few seconds.
  */
 void initialize() {
+
+  middleBand.set(0);
   // Print our branding over your terminal :D
   ez::ez_template_print();
 
@@ -280,9 +282,10 @@ void opcontrol() {
     }
     // R2: Out from middle
     else if (master.get_digital(pros::E_CONTROLLER_DIGITAL_R2)) {
-      colorSortLaunch();
+      middleScore();
     } else {
       stopIntake();
+      middleBand.set(0);
     }
 
     // Up: Toggle tongue mech

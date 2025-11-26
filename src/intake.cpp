@@ -18,7 +18,9 @@ void topScore() {
 }
 
 void middleScore() {
-  intake.move(-127);
+  intake.move(127);
+  topMotor.move(127);
+  middleBand.set(1);
   // boxRoller.move(127);
   // topRoller.move(127);
 }
