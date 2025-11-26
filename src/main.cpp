@@ -12,6 +12,8 @@
 // https://ez-robotics.github.io/EZ-Template/
 /////
 
+rd::Image logo("logo.bin", "Logo");
+
 // Chassis constructor
 ez::Drive chassis(
     // These are your drive motors, the first motor is used for sensing!
@@ -37,8 +39,6 @@ ez::Drive chassis(
  * to keep execution time for this mode under a few seconds.
  */
 void initialize() {
-
-  middleBand.set(0);
   // Print our branding over your terminal :D
   ez::ez_template_print();
 
@@ -85,7 +85,9 @@ void initialize() {
 
   // Initialize chassis and auton selector
   chassis.initialize();
-  ez::as::initialize();
+
+  logo.focus();
+  // ez::as::initialize();
   master.rumble(chassis.drive_imu_calibrated() ? "." : "---");
 }
 
