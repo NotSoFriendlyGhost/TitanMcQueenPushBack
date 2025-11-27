@@ -16,6 +16,16 @@ const int DRIVE_SPEED = 110;
 const int TURN_SPEED = 90;
 const int SWING_SPEED = 110;
 
+void set_position(){
+  chassis.drive_imu_reset(0);
+  chassis.odom_xyt_set(0,0,0);
+}
+
+void set_position(double x, double y, double heading){
+  chassis.drive_imu_reset(heading);
+  chassis.odom_xyt_set(x,y,heading);
+}
+
 ///
 // Constants
 ///
@@ -98,6 +108,8 @@ void drive_example() {
   // The third parameter is a boolean (true or false) for enabling/disabling a slew at the start of drive motions
   // for slew, only enable it when the drive distance is greater than the slew distance + a few inches
 
+  set_position();
+
   chassis.pid_drive_set(24_in, DRIVE_SPEED, true);
   chassis.pid_wait();
 
@@ -114,6 +126,8 @@ void drive_example() {
 void turn_example() {
   // The first parameter is the target in degrees
   // The second parameter is max speed the robot will drive at
+
+  set_position();
 
   chassis.pid_turn_set(90_deg, TURN_SPEED);
   chassis.pid_wait();

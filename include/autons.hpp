@@ -1,5 +1,8 @@
 #pragma once
 
+void set_position();
+void set_position(double x, double y, double heading);
+
 void default_constants();
 void tuned_constants();
 

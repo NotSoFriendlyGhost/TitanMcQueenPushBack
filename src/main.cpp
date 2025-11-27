@@ -90,6 +90,8 @@ void initialize() {
   // logo.focus();
   ez::as::initialize();
   master.rumble(chassis.drive_imu_calibrated() ? "." : "---");
+
+  set_position();
 }
 
 /**
