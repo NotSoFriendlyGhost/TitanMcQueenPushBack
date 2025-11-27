@@ -279,9 +279,9 @@ void interfered_example() {
 
 // test to retur to point (0,0,0) in odom
 void odom_return_test(){
-  chassis.pid_turn_set({0_in,0_in}, fwd, TURN_SPEED);
+  chassis.pid_turn_set({0_in,0_in}, rev, TURN_SPEED);
   chassis.pid_wait();
-  chassis.pid_odom_set({{0_in, 0_in},fwd, DRIVE_SPEED});
+  chassis.pid_odom_set({{0_in, 0_in},rev, DRIVE_SPEED});
   chassis.pid_wait();
   chassis.pid_turn_set(0, TURN_SPEED);
   chassis.pid_wait();
