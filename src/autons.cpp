@@ -340,6 +340,7 @@ void odom_pure_pursuit_example() {
 // Odom Pure Pursuit Wait Until
 ///
 void odom_pure_pursuit_wait_until_example() {
+  set_position();
   chassis.pid_odom_set({{{0_in, 24_in}, fwd, DRIVE_SPEED},
                         {{12_in, 24_in}, fwd, DRIVE_SPEED},
                         {{24_in, 24_in}, fwd, DRIVE_SPEED}},
