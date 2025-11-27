@@ -1,6 +1,8 @@
 #include "autons.hpp"
+#include "EZ-Template/util.hpp"
 #include "intake.hpp"
 #include "main.h"
+#include "pros/motors.h"
 #include "pros/rtos.hpp"
 #include "subsystems.hpp"
 
@@ -275,6 +277,16 @@ void interfered_example() {
   chassis.pid_wait();
 }
 
+// test to retur to point (0,0,0) in odom
+void odom_return_test(){
+  chassis.pid_turn_set({0_in,0_in}, fwd, TURN_SPEED);
+  chassis.pid_wait();
+  chassis.pid_odom_set({{0_in, 0_in},fwd, DRIVE_SPEED});
+  chassis.pid_wait();
+  chassis.pid_turn_set(0, TURN_SPEED);
+  chassis.pid_wait();
+}
+
 ///
 // Odom Drive PID
 ///
@@ -373,7 +385,7 @@ void measure_offsets() {
     chassis.pid_targets_reset();
     chassis.drive_imu_reset();
     chassis.drive_sensor_reset();
-    chassis.drive_brake_set(MOTOR_BRAKE_HOLD);
+    chassis.drive_brake_set(pros::E_MOTOR_BRAKE_HOLD);
     chassis.odom_xyt_set(0_in, 0_in, 0_deg);
     double imu_start = chassis.odom_theta_get();
     double target = i % 2 == 0 ? 90 : 270;  // Switch the turn target every run from 270 to 90

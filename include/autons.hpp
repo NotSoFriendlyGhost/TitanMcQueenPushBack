@@ -11,6 +11,7 @@ void swing_example();
 void motion_chaining();
 void combining_movements();
 void interfered_example();
+void odom_return_test();
 void odom_drive_example();
 void odom_pure_pursuit_example();
 void odom_pure_pursuit_wait_until_example();
