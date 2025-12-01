@@ -291,7 +291,7 @@ void interfered_example() {
   chassis.pid_wait();
 }
 
-// test to retur to point (0,0,0) in odom
+// test to return to point (0,0,0) in odom
 void odom_return_test(){
   chassis.pid_turn_set({0_in,0_in}, rev, TURN_SPEED);
   chassis.pid_wait();
@@ -323,6 +323,7 @@ void odom_drive_example() {
 // Odom Pure Pursuit
 ///
 void odom_pure_pursuit_example() {
+  set_position();
   // Drive to 0, 30 and pass through 6, 10 and 0, 20 on the way, with slew
   chassis.pid_odom_set({{{6_in, 10_in}, fwd, DRIVE_SPEED},
                         {{0_in, 20_in}, fwd, DRIVE_SPEED},
@@ -355,6 +356,7 @@ void odom_pure_pursuit_wait_until_example() {
 // Odom Boomerang
 ///
 void odom_boomerang_example() {
+  set_position();
   chassis.pid_odom_set({{0_in, 24_in, 45_deg}, fwd, DRIVE_SPEED},
                        true);
   chassis.pid_wait();
