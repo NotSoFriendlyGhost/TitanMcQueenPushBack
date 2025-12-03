@@ -1,4 +1,5 @@
 #include "autons.hpp"
+
 #include "EZ-Template/util.hpp"
 #include "intake.hpp"
 #include "main.h"
@@ -16,14 +17,14 @@ const int DRIVE_SPEED = 110;
 const int TURN_SPEED = 90;
 const int SWING_SPEED = 110;
 
-void set_position(){
+void set_position() {
   chassis.drive_imu_reset(0);
-  chassis.odom_xyt_set(0,0,0);
+  chassis.odom_xyt_set(0, 0, 0);
 }
 
-void set_position(double x, double y, double heading){
+void set_position(double x, double y, double heading) {
   chassis.drive_imu_reset(heading);
-  chassis.odom_xyt_set(x,y,heading);
+  chassis.odom_xyt_set(x, y, heading);
 }
 
 ///
@@ -70,7 +71,7 @@ void tuned_constants() {
   chassis.pid_heading_constants_set(11.0, 0.0, 20.0);        // Holds the robot straight while going forward without odom
   chassis.pid_turn_constants_set(3.0, 0.05, 27.0, 15.0);     // Turn in place constants
   chassis.pid_swing_constants_set(6.0, 0.0, 65.0);           // Swing constants
-  chassis.pid_odom_angular_constants_set(6.5, 0.0, 105.0);    // Angular control for odom motions
+  chassis.pid_odom_angular_constants_set(6.5, 0.0, 105.0);   // Angular control for odom motions
   chassis.pid_odom_boomerang_constants_set(5.8, 0.0, 32.5);  // Angular control for boomerang motions
 
   // Exit conditions
@@ -292,10 +293,10 @@ void interfered_example() {
 }
 
 // test to return to point (0,0,0) in odom
-void odom_return_test(){
-  chassis.pid_turn_set({0_in,0_in}, rev, TURN_SPEED);
+void odom_return_test() {
+  chassis.pid_turn_set({0_in, 0_in}, rev, TURN_SPEED);
   chassis.pid_wait();
-  chassis.pid_odom_set({{0_in, 0_in},rev, DRIVE_SPEED});
+  chassis.pid_odom_set({{0_in, 0_in}, rev, DRIVE_SPEED});
   chassis.pid_wait();
   chassis.pid_turn_set(0, TURN_SPEED);
   chassis.pid_wait();
@@ -396,7 +397,7 @@ void measure_offsets() {
   if (chassis.odom_tracker_right != nullptr) chassis.odom_tracker_right->reset();
   if (chassis.odom_tracker_back != nullptr) chassis.odom_tracker_back->reset();
   if (chassis.odom_tracker_front != nullptr) chassis.odom_tracker_front->reset();
-  
+
   for (int i = 0; i < iterations; i++) {
     // Reset pid targets and get ready for running an auton
     chassis.pid_targets_reset();
@@ -444,3 +445,13 @@ void measure_offsets() {
 // . . .
 // Make your own autonomous functions here!
 // . . .
+
+void auton1() {
+  set_position(0, 0, 0);
+  intake_in();
+  chassis.pid_odom_set({{{-5.77_in, 21.98_in}, fwd, DRIVE_SPEED},
+                        {{-25.87_in, 39.24_in}, fwd, DRIVE_SPEED}},
+                       true);
+  chassis.pid_wait();
+  pros::delay(5000);
+}
