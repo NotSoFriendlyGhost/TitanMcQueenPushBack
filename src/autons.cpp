@@ -457,7 +457,7 @@ void auton1() {
   chassis.pid_odom_set({{{-16.53_in, 24.71_in}, rev, DRIVE_SPEED},
                         {{-34.41_in, 5.58_in}, rev, DRIVE_SPEED}},
                        true);
-  chassis.pid_wait_quick();
+  chassis.pid_wait();
   chassis.pid_turn_set({-35.61, 20.57}, rev, TURN_SPEED);
   chassis.pid_wait();
   chassis.pid_odom_set({{-35.61,20.57}, rev, DRIVE_SPEED}, true);
