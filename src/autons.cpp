@@ -16,6 +16,7 @@
 const int DRIVE_SPEED = 110;
 const int TURN_SPEED = 90;
 const int SWING_SPEED = 110;
+const int BACK_DRIVE_SPEED = 70;
 
 void set_position() {
   chassis.drive_imu_reset(0);
@@ -86,7 +87,7 @@ void tuned_constants() {
 
   // Slew constants
   chassis.slew_turn_constants_set(3_deg, 70);
-  chassis.slew_drive_constants_set(3_in, 70);
+  chassis.slew_drive_constants_set(3_in, 60);
   chassis.slew_swing_constants_set(3_in, 80);
 
   // The amount that turns are prioritized over driving in odom motions
@@ -313,10 +314,10 @@ void odom_drive_example() {
   chassis.pid_odom_set(24_in, DRIVE_SPEED, true);
   chassis.pid_wait();
 
-  chassis.pid_odom_set(-12_in, DRIVE_SPEED);
+  chassis.pid_odom_set(-12_in, BACK_DRIVE_SPEED);
   chassis.pid_wait();
 
-  chassis.pid_odom_set(-12_in, DRIVE_SPEED);
+  chassis.pid_odom_set(-12_in, BACK_DRIVE_SPEED);
   chassis.pid_wait();
 }
 
@@ -454,13 +455,13 @@ void auton1() {
                        true);
   chassis.pid_wait();
   pros::delay(1000);
-  chassis.pid_odom_set({{{-16.53_in, 24.71_in}, rev, DRIVE_SPEED},
-                        {{-34.41_in, 5.58_in}, rev, DRIVE_SPEED}},
+  chassis.pid_odom_set({{{-16.53_in, 24.71_in}, rev, BACK_DRIVE_SPEED},
+                        {{-34.41_in, 5.58_in}, rev, BACK_DRIVE_SPEED}},
                        true);
   chassis.pid_wait();
   chassis.pid_turn_set({-35.61, 20.57}, rev, TURN_SPEED);
   chassis.pid_wait();
-  chassis.pid_odom_set({{-35.61,20.57}, rev, DRIVE_SPEED}, true);
+  chassis.pid_odom_set({{-35.61,20.57}, rev, BACK_DRIVE_SPEED}, true);
   chassis.pid_wait();
   slopeScore();
   set_position(-35.61,20.57, 177.22);
