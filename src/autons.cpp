@@ -460,7 +460,7 @@ void auton1() {
                         {{-34.41_in, 5.58_in}, rev, BACK_DRIVE_SPEED}},
                        true);
   chassis.pid_wait();
-  chassis.pid_turn_set(178,rev,TURN_SPEED);
+  chassis.pid_turn_set(178,TURN_SPEED);
   chassis.pid_wait();
   chassis.pid_odom_set(-23_in,DRIVE_SPEED);
   chassis.pid_wait();
