@@ -455,16 +455,18 @@ void auton1() {
                        true);
   chassis.pid_wait();
   pros::delay(1000);
+  stopIntake();
   chassis.pid_odom_set({{{-16.53_in, 24.71_in}, rev, BACK_DRIVE_SPEED},
                         {{-34.41_in, 5.58_in}, rev, BACK_DRIVE_SPEED}},
                        true);
   chassis.pid_wait();
-  chassis.pid_turn_set({-35.61, 20.57}, rev, TURN_SPEED);
+  chassis.pid_turn_set(178,rev,TURN_SPEED);
   chassis.pid_wait();
-  chassis.pid_odom_set({{-35.61,20.57}, rev, BACK_DRIVE_SPEED}, true);
+  chassis.pid_odom_set(-23_in,DRIVE_SPEED);
   chassis.pid_wait();
   slopeScore();
-  set_position(-35.61,20.57, 177.22);
+  // set_position(-34.55,22.03, 180.88);
   pros::delay(3000);
+  stopIntake();
   // pros::delay(5000);
 }
