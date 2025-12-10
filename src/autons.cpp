@@ -468,5 +468,19 @@ void auton1() {
   // set_position(-34.55,22.03, 180.88);
   pros::delay(3000);
   stopIntake();
+  chassis.pid_odom_set(26.6_in, DRIVE_SPEED, true);
+  tongue.set(1);
+  pros::delay(500);
+  intake_in();
+  chassis.pid_wait();
+  pros::delay(2000);
+  stopIntake();
+  chassis.pid_odom_set(-27_in, DRIVE_SPEED, true);
+  chassis.pid_wait();
+  slopeScore();
+  pros::delay(2000);
+  stopIntake();
+
+
   // pros::delay(5000);
 }
