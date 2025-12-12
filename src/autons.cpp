@@ -527,3 +527,25 @@ void auton2() {
   pros::delay(2000);
   stopIntake();
 }
+
+void auton3() {
+  set_position(0, 0, 0);
+  intake_in();
+  chassis.pid_odom_set({{{-5.77_in, 21.98_in}, fwd, DRIVE_SPEED},
+                        {{-25.87_in, 39.24_in}, fwd, DRIVE_SPEED}},
+                       true);
+  chassis.pid_wait();
+  pros::delay(1000);
+  stopIntake();
+  chassis.pid_odom_set({{{-13.14_in, 25.25_in}, rev, DRIVE_SPEED},
+                        {{0.81_in, 37.17_in}, rev, DRIVE_SPEED}},
+                       true);
+  chassis.pid_wait();
+  
+}
+
+
+  // chassis.pid_turn_set(-66.46,TURN_SPEED);
+  // chassis.pid_wait();
+  // chassis.pid_odom_set(-20_in,60);
+  // chassis.pid_wait();
