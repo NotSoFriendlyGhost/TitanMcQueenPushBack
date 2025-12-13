@@ -537,12 +537,12 @@ void auton3() {
   chassis.pid_wait();
   pros::delay(1000);
   stopIntake();
-  chassis.pid_odom_set({{{-13.14_in, 25.25_in}, rev, DRIVE_SPEED},
-                        {{0.81_in, 37.17_in}, rev, DRIVE_SPEED}},
+  chassis.pid_odom_set({{{-13.14_in, 25.25_in}, rev, BACK_DRIVE_SPEED},
+                        {{0.81_in, 37.17_in}, rev, BACK_DRIVE_SPEED}},
                        true);
   chassis.pid_wait();
   middleScore();
-  pros::delay(500);
+  pros::delay(2000);
   stopIntake();
   chassis.pid_odom_set({{-34.41_in, 5.58_in}, fwd, DRIVE_SPEED});
   chassis.pid_wait();
