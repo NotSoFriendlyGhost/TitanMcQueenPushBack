@@ -541,6 +541,20 @@ void auton3() {
                         {{0.81_in, 37.17_in}, rev, DRIVE_SPEED}},
                        true);
   chassis.pid_wait();
+  middleScore();
+  pros::delay(500);
+  stopIntake();
+  chassis.pid_odom_set({{-34.41_in, 5.58_in}, fwd, DRIVE_SPEED});
+  chassis.pid_wait();
+
+  chassis.pid_turn_set(-178,TURN_SPEED);
+  chassis.pid_wait();
+  chassis.pid_odom_set(-23.5_in,60);
+  chassis.pid_wait();
+  slopeScore();
+  // set_position(-34.55,22.03, 180.88);
+  pros::delay(3000);
+  stopIntake();
   
 }
 
