@@ -451,7 +451,7 @@ void auton1() {
   set_position(0, 0, 0);
   intake_in();
   chassis.pid_odom_set({{{-5.77_in, 21.98_in}, fwd, DRIVE_SPEED},
-                        {{-25.87_in, 39.24_in}, fwd, DRIVE_SPEED}},
+                        {{-25.87_in, 39.24_in}, fwd, 70}},
                        true);
   chassis.pid_wait();
   pros::delay(1000);
@@ -462,38 +462,34 @@ void auton1() {
   chassis.pid_wait();
   chassis.pid_turn_set(178,TURN_SPEED);
   chassis.pid_wait();
-  chassis.pid_odom_set(-23.5_in,60);
+  chassis.pid_odom_set({{-33.91, 23.14, 178}, rev, DRIVE_SPEED}, true);
+  // chassis.pid_odom_set(-18_in,60);
   chassis.pid_wait();
   slopeScore();
   // set_position(-34.55,22.03, 180.88);
   pros::delay(3000);
   stopIntake();
-  chassis.pid_odom_set(30_in, 127, true);
+  chassis.pid_odom_set(33_in, DRIVE_SPEED, true);
   tongue.set(1);
-  pros::delay(500);
+  pros::delay(200);
   intake_in();
   chassis.pid_wait();
-  chassis.pid_odom_set(2_in, DRIVE_SPEED, false);
-  chassis.pid_wait_quick();
-  chassis.pid_odom_set(-2_in, DRIVE_SPEED, false);
-  chassis.pid_wait_quick();
-  pros::delay(1000);
+  pros::delay(500);
   stopIntake();
   chassis.pid_odom_set(-27_in, 60, true);
+  chassis.pid_wait_until(-7_in);
+  tongue.set(0);
   chassis.pid_wait();
   slopeScore();
-  pros::delay(2000);
+  pros::delay(900);
   stopIntake();
-
-
-  // pros::delay(5000);
 }
 
 void auton2() {
   set_position(0, 0, 0);
   intake_in();
   chassis.pid_odom_set({{{5.77_in, 21.98_in}, fwd, DRIVE_SPEED},
-                        {{25.87_in, 39.24_in}, fwd, DRIVE_SPEED}},
+                        {{25.87_in, 39.24_in}, fwd, 70}},
                        true);
   chassis.pid_wait();
   pros::delay(1000);
@@ -504,27 +500,26 @@ void auton2() {
   chassis.pid_wait();
   chassis.pid_turn_set(-178,TURN_SPEED);
   chassis.pid_wait();
-  chassis.pid_odom_set(-23.5_in,60);
+  chassis.pid_odom_set({{33.91, 23.14, -178}, rev, DRIVE_SPEED}, true);
+  // chassis.pid_odom_set(-18_in,60);
   chassis.pid_wait();
   slopeScore();
   // set_position(-34.55,22.03, 180.88);
   pros::delay(3000);
   stopIntake();
-  chassis.pid_odom_set(30_in, 127, true);
+  chassis.pid_odom_set(33_in, DRIVE_SPEED, true);
   tongue.set(1);
-  pros::delay(500);
+  pros::delay(200);
   intake_in();
   chassis.pid_wait();
-  chassis.pid_odom_set(2_in, DRIVE_SPEED, false);
-  chassis.pid_wait_quick();
-  chassis.pid_odom_set(-2_in, DRIVE_SPEED, false);
-  chassis.pid_wait_quick();
-  pros::delay(1000);
+  pros::delay(500);
   stopIntake();
   chassis.pid_odom_set(-27_in, 60, true);
+  chassis.pid_wait_until(-7_in);
+  tongue.set(0);
   chassis.pid_wait();
   slopeScore();
-  pros::delay(2000);
+  pros::delay(900);
   stopIntake();
 }
 
