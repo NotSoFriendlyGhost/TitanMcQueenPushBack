@@ -545,18 +545,18 @@ void auton3() {
 
   chassis.pid_odom_set({{-32.17,  3.81}, fwd, DRIVE_SPEED}, true);
   chassis.pid_wait();
-  chassis.pid_turn_set({-32.99, -5.5}, fwd, TURN_SPEED);
+  chassis.pid_turn_set({-32.99, -6}, fwd, TURN_SPEED);
   chassis.pid_wait();
   tongue.set(1);
   pros::delay(500);
   intake_in();
-  chassis.pid_odom_set({{-32.99, -5.5}, fwd, 127}, true);
+  chassis.pid_odom_set({{-32.99, -6}, fwd, 127}, true);
   chassis.pid_wait();
   pros::delay(1000);
   stopIntake();
-  chassis.pid_turn_set({-32.27, 22.06}, rev, TURN_SPEED);
+  chassis.pid_turn_set({-32.77, 22.06}, rev, TURN_SPEED);
   chassis.pid_wait();
-  chassis.pid_odom_set({{-32.27, 22.06}, rev, DRIVE_SPEED}, true);
+  chassis.pid_odom_set({{-32.77, 22.06}, rev, DRIVE_SPEED}, true);
   chassis.pid_wait();
   slopeScore();
   pros::delay(2000);
