@@ -286,7 +286,7 @@ void opcontrol() {
       slopeScore();
     }
     // R1: Out from bottom
-    else if (master.get_digital(pros::E_CONTROLLER_DIGITAL_R1)) {
+    else if (master.get_digital(pros::E_CONTROLLER_DIGITAL_A)) {
       intake_out();
     }
     // R2: Out from middle
@@ -300,7 +300,7 @@ void opcontrol() {
     tongue.button_toggle(master.get_digital(DIGITAL_B));
 
     // A: Toggle descore
-    descore.button_toggle(master.get_digital(DIGITAL_A));
+    descore.button_toggle(master.get_digital(pros::E_CONTROLLER_DIGITAL_R1));
 
     pros::delay(ez::util::DELAY_TIME);  // This is used for timer calculations!  Keep this ez::util::DELAY_TIME
   }

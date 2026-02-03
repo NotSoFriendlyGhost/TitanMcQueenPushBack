@@ -515,8 +515,6 @@ void auton2() {
   pros::delay(500);
   stopIntake();
   chassis.pid_odom_set(-27_in, 60, true);
-  chassis.pid_wait_until(-7_in);
-  tongue.set(0);
   chassis.pid_wait();
   slopeScore();
   pros::delay(900);
