@@ -27,3 +27,5 @@ void auton2();
 void auton3();
 void auton4();
 void autonSkills();
+
+void wing_auton();
