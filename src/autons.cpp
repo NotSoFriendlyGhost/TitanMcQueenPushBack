@@ -722,3 +722,12 @@ void right_wing_auton(){
                        },
                        true);
 }
+
+void sawp(){
+  set_position(-48.28, -15.424, 180);
+  tongue.set(1);
+  chassis.pid_odom_set({{-48.28, -47.838}, fwd, DRIVE_SPEED}, true);
+  chassis.pid_wait();
+  chassis.pid_turn_set({-54.28,-47.838}, fwd, TURN_SPEED);
+
+}
