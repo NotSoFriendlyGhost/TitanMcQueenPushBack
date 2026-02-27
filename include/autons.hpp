@@ -29,3 +29,4 @@ void auton4();
 void autonSkills();
 
 void wing_auton();
+void right_wing_auton();
