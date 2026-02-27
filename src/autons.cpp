@@ -778,5 +778,39 @@ void sawp(){
   chassis.pid_wait();
   slopeScore();
   pros::delay(1000);
+}
 
+void auton_skills(){
+  // first loader and goal
+  set_position(-48.28, -15.424, 180);
+  tongue.set(1);
+  chassis.pid_odom_set({{-48.28, -49.838}, fwd, DRIVE_SPEED}, true);
+  chassis.pid_wait();
+  intake_in();
+  chassis.pid_turn_set({-55.1,-49.838}, fwd, TURN_SPEED);
+  chassis.pid_wait();
+  chassis.pid_odom_set({{-55.1, -49.838}, fwd, DRIVE_SPEED}, true);
+  chassis.pid_wait();
+  pros::delay(200);
+  chassis.pid_odom_set({{-26.417, -49.838}, rev, BACK_DRIVE_SPEED}, true);
+  chassis.pid_wait();
+  slopeScore();
+  pros::delay(1100);
+  stopIntake();
+  tongue.set(0);
+
+  chassis.pid_odom_set({{-41.417, -49.838}, fwd, DRIVE_SPEED}, true);
+  chassis.pid_wait();
+  descore.set(1);
+
+
+
+  // chassis.pid_odom_set({{-45.546_in, -47.965_in}, fwd, DRIVE_SPEED}, true);
+  // chassis.pid_wait();
+
+  // chassis.pid_odom_set({{{-30.546_in, -37.465_in}, rev, BACK_DRIVE_SPEED},
+  //                       {{-8.546_in, -37.465_in}, rev, BACK_DRIVE_SPEED},
+  //                      },
+  //                      true);
+  
 }
