@@ -89,6 +89,7 @@ void initialize() {
       {"Auton skills", autonSkills},
       {"Left wing auton", wing_auton},
       {"Right wing auton", right_wing_auton},
+      {"Solo AWP", sawp},
   });
 
   // Initialize chassis and auton selector
