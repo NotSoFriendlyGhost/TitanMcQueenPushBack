@@ -677,11 +677,13 @@ void wing_auton(){
   chassis.pid_wait();
   pros::delay(500);
 
-  chassis.pid_odom_set({{-30.546, 47.965}, rev, DRIVE_SPEED}, true);
-  tongue.set(0);
+  chassis.pid_odom_set({{-32.546, 47.965}, rev, DRIVE_SPEED}, true);
+  // tongue.set(0);
+  // chassis.pid_wait_until(22);
   chassis.pid_wait();
   slopeScore();
-  pros::delay(1600);
+  pros::delay(1700);
+  intake_in();
 
   chassis.pid_odom_set({{-45.546_in, 47.965_in}, fwd, DRIVE_SPEED}, true);
   chassis.pid_wait();
