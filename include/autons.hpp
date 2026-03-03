@@ -28,6 +28,8 @@ void auton3();
 void auton4();
 void autonSkills();
 
+void fast_wing_auton();
+void right_fast_wing_auton();
 void wing_auton();
 void right_wing_auton();
 void sawp();
