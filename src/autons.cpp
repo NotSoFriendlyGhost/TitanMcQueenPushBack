@@ -681,6 +681,8 @@ void wing_auton(){
   // tongue.set(0);
   // chassis.pid_wait_until(22);
   chassis.pid_wait();
+  intake_out();
+  pros::delay(50);
   slopeScore();
   pros::delay(1700);
   intake_in();
