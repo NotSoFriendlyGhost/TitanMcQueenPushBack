@@ -48,6 +48,7 @@
 #include "autons.hpp"
 #include "subsystems.hpp"
 #include "intake.hpp"
+#include "auton_recorder.hpp"
 
 
 /**

@@ -93,7 +93,10 @@ void initialize() {
       {"Fast wing auton", fast_wing_auton},
       {"Right fast wing auton", right_fast_wing_auton},
       {"Scores on middle and wings", middle_auton},
+      {"Replay recorded auton", replay_recorded_auton},
   });
+
+  auton_recorder_init();
 
   // Initialize chassis and auton selector
   chassis.initialize();
@@ -270,6 +273,9 @@ void opcontrol() {
   chassis.drive_brake_set(MOTOR_BRAKE_COAST);
 
   while (true) {
+    // Update auton recorder
+    auton_recorder_update();
+
     // Gives you some extras to make EZ-Template ezier
     ez_template_extras();
 
