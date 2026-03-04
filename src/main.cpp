@@ -92,6 +92,7 @@ void initialize() {
       {"Solo AWP", sawp},
       {"Fast wing auton", fast_wing_auton},
       {"Right fast wing auton", right_fast_wing_auton},
+      {"Scores on middle and wings", middle_auton},
   });
 
   // Initialize chassis and auton selector

@@ -34,3 +34,5 @@ void wing_auton();
 void right_wing_auton();
 void sawp();
 void auton_skills();
+
+void middle_auton();
