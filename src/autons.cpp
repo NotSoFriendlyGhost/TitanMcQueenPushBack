@@ -892,12 +892,12 @@ void middle_auton(){
   chassis.pid_wait();
 
   //score on middle goal
-  chassis.pid_turn_set({-8.494_in, 11.119_in}, rev, TURN_SPEED);
+  chassis.pid_turn_set({-6.494_in, 9.119_in}, rev, TURN_SPEED);
   chassis.pid_wait();
-  chassis.pid_odom_set({{-8.494, 11.119}, rev, DRIVE_SPEED}, true);
+  chassis.pid_odom_set({{-6.494, 9.119}, rev, DRIVE_SPEED}, true);
   chassis.pid_wait();
   middleScore();
-  pros::delay(1000);
+  pros::delay(750);
   intake_in();
 
 
@@ -910,7 +910,7 @@ void middle_auton(){
   chassis.pid_wait();
   chassis.pid_odom_set({{-56.194_in, 48.965_in}, fwd, DRIVE_SPEED}, true);
   chassis.pid_wait();
-  pros::delay(500);
+  pros::delay(400);
 
   chassis.pid_odom_set({{-26.546, 47.965}, rev, DRIVE_SPEED}, true);
   pros::delay(100);
@@ -919,7 +919,7 @@ void middle_auton(){
   intake_out();
   pros::delay(100);
   slopeScore();
-  pros::delay(1700);
+  pros::delay(1600);
   intake_in();
 
   chassis.pid_odom_set({{-45.546_in, 47.965_in}, fwd, DRIVE_SPEED}, true);
