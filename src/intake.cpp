@@ -4,11 +4,13 @@
 void intake_in() {
   intake.move(127);
   topMotor.move(-20);
+  middleBand.set(0);
 }
 
 void intake_out() {
   intake.move(-127);
   topMotor.move(-127);
+  middleBand.set(0);
 }
 
 void middleScore() {
@@ -27,4 +29,5 @@ void stopIntake() {
 void slopeScore(){
   intake.move(127);
   topMotor.move(127);
+  middleBand.set(0);
 }
