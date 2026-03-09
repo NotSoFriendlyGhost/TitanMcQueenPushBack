@@ -629,35 +629,16 @@ void auton4() {
 }
 
 void autonSkills(){
-  set_position(0, 0, 0);
-  intake_in();
-  chassis.pid_odom_set({{{-5.77_in, 21.98_in}, fwd, DRIVE_SPEED},
-                        {{-25.87_in, 39.24_in}, fwd, DRIVE_SPEED}},
-                       true);
+  set_position(-48.28, -15.424, 180);
+  chassis.pid_odom_set({{{-48.093, -47.838}, fwd, DRIVE_SPEED}}, true);
   chassis.pid_wait();
-  pros::delay(1000);
-  stopIntake();
-  chassis.pid_odom_set({{{-16.53_in, 24.71_in}, rev, BACK_DRIVE_SPEED},
-                        {{-34.41_in, 5.58_in}, rev, BACK_DRIVE_SPEED}},
-                       true);
+  chassis.pid_turn_set({-57.836, -47.276}, fwd, TURN_SPEED);
   chassis.pid_wait();
-  chassis.pid_turn_set(178,TURN_SPEED);
+  chassis.pid_odom_set({{{-57.836, -47.276}, fwd, DRIVE_SPEED}}, true);
   chassis.pid_wait();
-  chassis.pid_odom_set(-23.5_in,60);
-  chassis.pid_wait();
-  slopeScore();
-  pros::delay(3000);
-  stopIntake();
-  set_position(0,0,0);
-  chassis.pid_odom_set({0_in,16.58_in}, true);
-  chassis.pid_wait();
-  chassis.pid_turn_set(180,TURN_SPEED);
-  chassis.pid_wait();
-  chassis.pid_odom_set({{25.95_in, 34.4_in, 90_deg}, rev, BACK_DRIVE_SPEED},
-                       true);
-  chassis.pid_wait();
-  chassis.pid_odom_set(-15_in, BACK_DRIVE_SPEED);
-  chassis.pid_wait();
+  
+
+  chassis.pid_odom_set({{{-34.432, -58.796}, fwd, DRIVE_SPEED}, {{34.484, -58.796}, rev, DRIVE_SPEED}}, true);
 }
 
 void fast_wing_auton(){
