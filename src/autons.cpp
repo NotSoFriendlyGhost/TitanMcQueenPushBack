@@ -17,7 +17,7 @@
 const int DRIVE_SPEED = 110;
 const int TURN_SPEED = 90;
 const int SWING_SPEED = 110;
-const int BACK_DRIVE_SPEED = 70;
+const int BACK_DRIVE_SPEED = 110;
 
 void set_position() {
   chassis.drive_imu_reset(0);
@@ -692,7 +692,7 @@ void right_fast_wing_auton(){
   pros::delay(1400);
   intake_in();
 
-  chassis.pid_odom_set({{-45.546_in, -37.965_in}, fwd, DRIVE_SPEED}, true);
+  chassis.pid_odom_set({{-39.546_in, -37.965_in}, fwd, DRIVE_SPEED}, true);
   chassis.pid_wait();
 
   chassis.pid_odom_set({{{-30.546_in, -37.465_in}, rev, BACK_DRIVE_SPEED},
@@ -730,7 +730,7 @@ void wing_auton(){
   pros::delay(1700);
   intake_in();
 
-  chassis.pid_odom_set({{-45.546_in, 58.965_in}, fwd, DRIVE_SPEED}, true);
+  chassis.pid_odom_set({{-39.546_in, 58.965_in}, fwd, DRIVE_SPEED}, true);
   chassis.pid_wait();
 
   chassis.pid_odom_set({{{-30.546_in, 58.465_in}, rev, BACK_DRIVE_SPEED},
@@ -766,7 +766,7 @@ void right_wing_auton(){
   pros::delay(1700);
   intake_in();
 
-  chassis.pid_odom_set({{-45.546_in, -37.965_in}, fwd, DRIVE_SPEED}, true);
+  chassis.pid_odom_set({{-39.546_in, -37.965_in}, fwd, DRIVE_SPEED}, true);
   chassis.pid_wait();
 
   chassis.pid_odom_set({{{-30.546_in, -37.465_in}, rev, BACK_DRIVE_SPEED},
@@ -839,24 +839,36 @@ void auton_skills(){
   // first loader and goal
   set_position(-48.28, -15.424, 180);
   tongue.set(1);
-  chassis.pid_odom_set({{-48.28, -49.838}, fwd, DRIVE_SPEED}, true);
+  chassis.pid_odom_set({{-48.28, -47.638}, fwd, DRIVE_SPEED}, true);
   chassis.pid_wait();
   intake_in();
-  chassis.pid_turn_set({-55.1,-49.838}, fwd, TURN_SPEED);
+  chassis.pid_turn_set({-57.1,-47.638}, fwd, TURN_SPEED);
   chassis.pid_wait();
-  chassis.pid_odom_set({{-55.1, -49.838}, fwd, DRIVE_SPEED}, true);
+  chassis.pid_odom_set({{-57.1, -47.638}, fwd, DRIVE_SPEED}, true);
   chassis.pid_wait();
-  pros::delay(200);
-  chassis.pid_odom_set({{-26.417, -49.838}, rev, BACK_DRIVE_SPEED}, true);
+  pros::delay(1200);
+  stopIntake();
+
+  chassis.pid_odom_set(-3_in, DRIVE_SPEED);
+  chassis.pid_wait();
+
+  chassis.pid_odom_set({{{-30.546_in, -59.465_in}, rev, BACK_DRIVE_SPEED},
+                        {{30.546_in, -59.465_in}, rev, BACK_DRIVE_SPEED},
+                        {{40.546_in, -47.638_in}, rev, BACK_DRIVE_SPEED},
+                       },
+                       true);
+  chassis.pid_wait();
+
+  chassis.pid_turn_set({57.1,-47.638}, fwd, TURN_SPEED);
+  chassis.pid_wait();
+
+  chassis.pid_odom_set({{26.417, -47.838}, rev, BACK_DRIVE_SPEED}, true);
   chassis.pid_wait();
   slopeScore();
-  pros::delay(1100);
-  stopIntake();
-  tongue.set(0);
-
-  chassis.pid_odom_set({{-41.417, -49.838}, fwd, DRIVE_SPEED}, true);
+  pros::delay(1750);
+  intake_in();
+  chassis.pid_odom_set({{57.1, -47.638}, fwd, DRIVE_SPEED}, true);
   chassis.pid_wait();
-  descore.set(1);
 
 
 
@@ -881,9 +893,9 @@ void middle_auton(){
   chassis.pid_wait();
 
   //score on middle goal
-  chassis.pid_turn_set({-4.494_in, 8.119_in}, rev, TURN_SPEED);
+  chassis.pid_turn_set({-5.494_in, 9.119_in}, rev, TURN_SPEED);
   chassis.pid_wait();
-  chassis.pid_odom_set({{-4.494, 8.119}, rev, DRIVE_SPEED}, true);
+  chassis.pid_odom_set({{-5.494, 9.119}, rev, DRIVE_SPEED}, true);
   chassis.pid_wait();
   middleScore();
   pros::delay(750);
@@ -911,7 +923,7 @@ void middle_auton(){
   pros::delay(1600);
   intake_in();
 
-  chassis.pid_odom_set({{-45.546_in, 58.965_in}, fwd, DRIVE_SPEED}, true);
+  chassis.pid_odom_set({{-39.546_in, 58.965_in}, fwd, DRIVE_SPEED}, true);
   chassis.pid_wait();
 
   chassis.pid_odom_set({{{-30.546_in, 58.465_in}, rev, BACK_DRIVE_SPEED},

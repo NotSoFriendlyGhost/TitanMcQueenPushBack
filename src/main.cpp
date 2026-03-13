@@ -86,7 +86,7 @@ void initialize() {
       {"Left solo auton", auton4},
       {"Right solo auton", auton2},
       {"Left double auton", auton3},
-      {"Auton skills", autonSkills},
+      {"Auton skills", auton_skills},
       {"Left wing auton", wing_auton},
       {"Right wing auton", right_wing_auton},
       {"Solo AWP", sawp},
