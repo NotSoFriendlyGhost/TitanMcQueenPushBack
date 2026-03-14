@@ -32,6 +32,7 @@ void fast_wing_auton();
 void right_fast_wing_auton();
 void wing_auton();
 void right_wing_auton();
+void right_bottom_auton();
 void sawp();
 void auton_skills();
 

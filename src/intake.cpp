@@ -14,7 +14,7 @@ void intake_out() {
 }
 
 void middleScore() {
-  intake.move(127);
+  intake.move(100);
   topMotor.move(127);
   middleBand.set(1);
 }
